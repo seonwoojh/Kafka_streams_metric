@@ -1,0 +1,15 @@
+#==========================  Modules configuration =============================
+metricbeat.modules:
+
+#-------------------------------- System Module --------------------------------
+- module: system
+  metricsets:
+    - cpu             # CPU usage
+    - memory          # Memory usage
+    - network         # Network IO
+  enabled: true
+  period: 10s
+
+output.kafka:
+  hosts: ["192.168.200.103:9092"]
+  topic: 'metric.all'

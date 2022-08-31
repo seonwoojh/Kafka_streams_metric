@@ -6,14 +6,14 @@ import com.google.gson.JsonObject;
 public class MetricJsonUtils {
 
     public static double getTotalCpuPercent(String value) {
-        return JsonParser().parser(value).getJsonObject().getJsonObject().get("system").
-        getJsonObject().get("cpu")
+        return new JsonParser().parse(value).getAsJsonObject().get("system").
+        getAsJsonObject().get("cpu")
                 .getAsJsonObject().get("total").getAsJsonObject().get("norm").
                 getAsJsonObject().get("pct").getAsDouble();
     }
 
     public static String getMetricName(String value) {
-        return JsonParser().parser(value).getJsonObject().get("metricset").
+        return new JsonParser().parse(value).getAsJsonObject().get("metricset").
         getAsJsonObject().get("name")
                 .getAsString();
     }
